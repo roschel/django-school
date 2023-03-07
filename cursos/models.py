@@ -24,7 +24,7 @@ class Course(Base):
 
 
 class Evaluation(Base):
-    course = models.ForeignKey(Course, related_name='avaliações', on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, related_name='evaluations', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     email = models.EmailField()
     comment = models.TextField(blank=True, default='')
