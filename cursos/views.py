@@ -52,10 +52,14 @@ API V2
 from rest_framework import permissions, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from .permissions import IsSuperUser
 
 
 class CourseViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.DjangoModelPermissions, )
+    permission_classes = (
+        IsSuperUser,
+        permissions.DjangoModelPermissions,
+    )
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
@@ -68,7 +72,7 @@ class CourseViewSet(viewsets.ModelViewSet):
         if page is not None:
             serializer = EvaluationSerializer(page, many=True)
             return self.get_paginated_response(serializer.data)
-        
+
         serializer = EvaluationSerializer(evaluations, many=True)
         return Response(serializer.data)
 
