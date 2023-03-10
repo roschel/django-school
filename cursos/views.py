@@ -49,12 +49,13 @@ class EvaluationAPIView(generics.RetrieveUpdateDestroyAPIView):
 """
 API V2
 """
-from rest_framework import viewsets
+from rest_framework import permissions, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
 
 class CourseViewSet(viewsets.ModelViewSet):
+    permission_classes = (permissions.DjangoModelPermissions, )
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
