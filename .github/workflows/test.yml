@@ -11,3 +11,4 @@ jobs:
       - name: Printando versão
         run: |
           echo ${{ github.ref_name }}
+          echo "Printou a versão?"
