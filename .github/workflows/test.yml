@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: Printando versão
         run: |
-          echo ${{ github.sha }}
+          echo ${{ github.ref_name }}
