@@ -1,0 +1,13 @@
+name: Test
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Printando versão
+        run: |
+          echo ${{ github.sha }}
